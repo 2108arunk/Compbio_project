@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include <lib.hpp>
 //#include <mainh.hpp>
 
 using namespace std;
@@ -29,7 +30,7 @@ int editDistanceNaive(string &X, string &Y){
         }
     }
 
-    //printNaive(dp);
+    printNaive(dp, X);
     cout << "Edit distance Naive = " << dp[X.size()][Y.size()] << endl; 
 
     return 0;

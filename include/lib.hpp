@@ -5,6 +5,6 @@ using namespace std;
 // Temp array of n words, two extra variables ed & prev are used
 // amouting to a total complexity of n + O(1)
 
-void printNaive(vector <vector<int>> temp);
+void printNaive(vector <vector<int>> temp, string X);
 int editDistanceNaive(string &X, string &Y);
 void print(vector<int> &temp);
