@@ -7,7 +7,8 @@
 */
 #include<iostream>
 #include<fstream>
-#include <stdlib.h>
+#include<stdlib.h>
+#include<time.h>
 using namespace std;
 
 
@@ -110,7 +111,7 @@ void naive_ed(string &X, string &Y)
         }
     }
 
-
+    printf("Edit distance is %ld\n",dp[row*col - 1]);
     fill = fill_a(dp,a_X,a_Y,X,Y,row, col, a_size - 1);
     print_a(a_X,a_Y,fill,a_size);
     free(a_X);free(a_Y);free(dp);
@@ -120,11 +121,15 @@ void naive_ed(string &X, string &Y)
  *  Main function. To run this code. Generates output.txt same as out.txt  
 */
 int main(){
-    ifstream input_file;
+    ifstream input_file1,input_file2;
     string X,Y;
-    input_file = ifstream("in.txt");
-    input_file >> X >> Y;
+    clock_t t;
+    input_file1 = ifstream("xaa");
+    input_file2 = ifstream("xab");
+    input_file1 >> X;
+    input_file2 >> Y;
     naive_ed(X,Y);
-    input_file.close();
+    input_file1.close();
+    input_file2.close();
     return 0;
 }

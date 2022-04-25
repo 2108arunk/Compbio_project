@@ -13,7 +13,7 @@ void pretty_print(char *a_X, char *a_Y,uint64_t pos)
 {
     ofstream out_file; 
     out_file = ofstream("output.txt");
-    
+    uint64_t ed=0;
     for(uint64_t i=0;i < pos; i++)
         out_file << a_X[i];
     out_file << endl;
@@ -23,7 +23,11 @@ void pretty_print(char *a_X, char *a_Y,uint64_t pos)
     out_file << endl;
     for(uint64_t i=0;i < pos; i++)
         out_file << a_Y[i];
-    
+    for(uint64_t i =0; i<pos; i++){
+	if(a_X[i]=='_' || a_Y[i] == '_' || (a_X[i]!=a_Y[i]))
+		ed++;    
+    }
+    cout << "Edit distance is : " << ed << endl; 
     out_file.close();
 }
 
