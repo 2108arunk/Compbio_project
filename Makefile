@@ -11,9 +11,6 @@ hirschberg_edit:
 naive_edit:
 	$(CC) $(CFLAGS) -o ./bin/naive_edit -Iinclude/ ./src/basic_ed.cpp
 
-hirsch_archit:
-	$(CC) $(CFLAGS) -o ./bin/hirsch_archit -Iinclude/ ./src/hirshberg_as.cpp
-
 clean:
 	rm -f ./bin/*
 
