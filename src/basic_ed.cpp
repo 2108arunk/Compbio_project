@@ -11,199 +11,144 @@
 #include<algorithm>
 using namespace std;
 
-void pretty_print(vector<char> &a_X,vector<char> &a_Y)
+void print_a(char *a_X,char *a_Y,uint64_t si,\
+             uint64_t a_size)
 {
     ofstream out_file; 
-    out_file = ofstream("output.txt");
-    
-    for(uint64_t i=0;i < a_X.size(); i++)
+    out_file = ofstream("outputNaive.txt");
+    for(int i=si+1;i < a_size; i++)
         out_file << a_X[i];
     out_file << endl;
-    for(uint64_t i=0;i < a_X.size(); i++)
+    for(int i=si+1;i < a_size; i++)
         out_file << (((a_X[i]!='_' && a_Y[i]!='_') && (a_X[i] != a_Y[i]))?\
         '|' : ' ');
     out_file << endl;
-    for(uint64_t i=0;i < a_X.size(); i++)
+    for(int i=si+1;i < a_size; i++)
         out_file << a_Y[i];
-    
     out_file.close();
 }
 
-void find_edit1(uint64_t i_x, uint64_t j_x,uint64_t i_y, uint64_t j_y,
-                vector<uint64_t>&dp, string &X, string &Y)
+int fill_a( uint64_t *dp,char *a_X,char *a_Y,
+            string &X,string&Y, uint64_t row, uint64_t col,
+            uint64_t pos)
 {
-    uint64_t temp1,temp2,len1 = j_x - i_x + 1,len2 = j_y - i_y + 1,k,l;
+    uint64_t m = row - 1, n = col - 1, tempind;
+
+    while(m!=0 && n!=0){
+        tempind = m * col + n;
+        if(((X[m-1]==Y[n-1]) && dp[tempind] == dp[tempind - col - 1])
+            || dp[tempind] == dp[tempind - col -1] + 1){
+            a_X[pos] = X[m-1];
+            a_Y[pos] = Y[n-1];
+            m--;
+            n--;
+        }
+
+        else if (dp[tempind] == dp[tempind - 1] + 1)
+        {
+            a_X[pos] = '_';
+            a_Y[pos] = Y[n-1];
+            n--;
+        }
+
+        else
+        {
+            a_X[pos] = X[m-1];
+            a_Y[pos] = '_';
+            m--;
+        }
+        pos--;
+    }
+
+    if(n!=0)
+    {
+        while(n!=0)
+        {
+            a_Y[pos] = Y[n-1];
+            a_X[pos] = '_';
+            n--;
+            pos--;
+        }
+    }
+
+    if(m!=0)
+    {
+        while(m!=0)
+        {
+            a_X[pos]= X[m-1];
+            a_Y[pos] = '_';
+            m--;
+            pos--;
+        }
+    }
+
+    return pos;
+
+}
+
+
+uint64_t naive_ed(string &X, string &Y)
+{
+    uint64_t row = X.size() + 1, col = Y.size() + 1,tempind;
+    uint64_t a_size = X.size() + Y.size(),fill;
+    uint64_t *dp = (uint64_t *)malloc((row * col) * sizeof(uint64_t));
+    char *a_X = (char *)malloc(a_size * sizeof(char));
+    char *a_Y = (char *)malloc(a_size * sizeof(char));
 
     dp[0] = 0;
-    for(k = 1; k <= len2; k++)
-        dp[k] = k;
-
-    for(k=1;k<=len1;k++)
-    {
-        temp1 = k-1;
-        dp[0] = k;
-        for(l=1;l<=len2;l++){
-            temp2 = dp[l];
-            dp[l] = (X[i_x + k -1]==Y[i_y + (l - 1)]) ? temp1 : 1 + min(dp[l-1],min(dp[l],\
-            temp1));
-            temp1 = temp2;
-        }
-    }
-}
-
-void find_edit2(uint64_t i_x, uint64_t j_x,uint64_t i_y, uint64_t j_y,
-                vector<uint64_t>&dp, string &X, string &Y)
-{
-    uint64_t temp1,temp2,len1 = j_x - i_x + 1,len2 = j_y - i_y + 1,k,l;
-
-    dp[0] = 0;
-    for(k = 1; k <= len2; k++)
-        dp[k] = k;
-
-    for(k=1;k<=len1;k++)
-    {
-        temp1 = k-1;
-        dp[0] = k;
-        for(l=1;l<=len2;l++){
-            temp2 = dp[l];
-            dp[l] = (X[j_x - k +1]==Y[j_y - l + 1]) ? temp1 : 1 + min(dp[l-1],min(dp[l],\
-            temp1));
-            temp1 = temp2;
-        }
-    }
-
-}
-void h_recursive(vector<char> &a_X, vector<char>&a_Y,
-                 string &X, string &Y,
-                 uint64_t s_x,uint64_t e_x,uint64_t s_y,uint64_t e_y)
-{
-    uint64_t row = e_x - s_x + 1, col = e_y - s_y + 1,split = (e_x + s_x)/2,k;
-
-    if(col==0)
-    {
-        for(uint64_t i = s_x; i<=e_x; i++)
-        {
-            a_X.push_back(X[i]);
-            a_Y.push_back('_');
-        }
-        return;
-    }
-    else if(row==0)
-    {
-        for(uint64_t i = s_y; i<=e_y; i++)
-        {
-            a_X.push_back('_');
-            a_Y.push_back(Y[i]);
-        }
-        return;
-    }
-    else if(row ==1)
-    {
-        uint64_t i;
-        for(i = s_y; i<=e_y; i++)
-        {
-            if(X[s_x]==Y[i])
-            {
-                a_X.push_back(X[s_x]);
-                a_Y.push_back(Y[i]);
-                i++;
-                break;
-            }
-            else
-            {
-                if(i==e_y)
-                {
-                    a_X.push_back(X[s_x]);
-                    a_Y.push_back(Y[i]);
-                }
-                else
-                {
-                    a_X.push_back('_');
-                    a_Y.push_back(Y[i]);
-                }
-            }
-        }
-        for(; i<=e_y; i++)
-        {
-            a_X.push_back('_');
-            a_Y.push_back(Y[i]);
-        }
-        return;
-    }
-    else if(col == 1)
-    {
-        uint64_t i;
-        
-        for(i = s_x; i<=e_x; i++)
-        {
-            if(X[i]==Y[s_y])
-            {
-                a_X.push_back(X[i]);
-                a_Y.push_back(Y[s_y]);
-                i++;
-                break;
-            }
-            else
-            {
-                if(i==e_x)
-                {
-                    a_X.push_back(X[i]);
-                    a_Y.push_back(Y[s_y]);
-                }
-                else
-                {
-                    a_X.push_back(X[i]);
-                    a_Y.push_back('_');
-                }
-            }
-        }
-        for(; i<=e_x; i++)
-        {
-            a_X.push_back(X[i]);
-            a_Y.push_back('_');
-        }
-        return;
-    }
-
-    uint64_t ans;
-    vector<uint64_t>dp1(col+1),dp2(col+1),dp3(col+1);
-
-    find_edit1(s_x,e_x,s_y,e_y,dp1,X,Y);
-    ans = dp1[col];
-
-    find_edit1(s_x,split,s_y,e_y,dp2,X,Y);
-    find_edit2(split+1,e_x,s_y,e_y,dp3,X,Y);
-
-    for(k=0;k<=col;k++)
-    {
-        if(dp2[k] + dp3[col-k]== ans)
-            break;
-    }
+    for(uint64_t i=1;i<row;i++)
+        dp[i * col] = i;
+    for(uint64_t j=1;j<col;j++)
+        dp[j] = j;
     
-    h_recursive(a_X,a_Y,X,Y,s_x,split,s_y, s_y + k - 1);
-    h_recursive(a_X,a_Y,X,Y,split+1,e_x,s_y + k, e_y);
+    for(uint64_t i=1; i < row; i++){
+        for(uint64_t j=1;j< col; j++){
+            tempind = (uint64_t)(i * col + j);
+            if (tempind %1000000 == 0)
+                cout<<tempind<<endl;
+            dp[tempind] = (X[i-1]==Y[j-1]) ? dp[tempind-col-1] : dp[tempind-col-1] + 1;
+            dp[tempind] = min(dp[tempind],dp[tempind-1] + 1);
+            dp[tempind] = min(dp[tempind],dp[tempind- col] + 1);
+        }
+    }
+
+    printf("Edit distance is %llu\n",dp[row*col - 1]);
+    fill = fill_a(dp,a_X,a_Y,X,Y,row, col, a_size - 1);
+    print_a(a_X,a_Y,fill,a_size);
+    free(a_X);free(a_Y);free(dp);
+    return dp[row*col - 1];
 
 }
-void hirschberg(string &X, string &Y)
-{
-    vector<char> a_X,a_Y;
-    
-    h_recursive(a_X,a_Y,X,Y,0,X.size()-1,0, Y.size()-1);
-    pretty_print(a_X,a_Y);
-}
 
-/*
- *  Main function. To run this code. Generates output.txt same as out.txt  
-*/
-int main(){
-    ifstream input_file1, input_file2;
-    string X,Y;
-    input_file1 = ifstream("xaa");
-    input_file2 = ifstream("xab");
-    input_file1 >> X;
-    input_file2 >> Y;
-    hirschberg(X,Y);
-    input_file1.close();
-    input_file2.close();
+
+int main(int argc, char* argv[]){
+
+    if (argc < 3){
+        cout<< "provide both testfiles for X and Y";
+        return 0;
+    }
+
+    string Xfile, Yfile, X, Y;
+
+    Xfile = argv[1];
+    Yfile = argv[2];
+
+    ifstream input1 (Xfile);
+    ifstream input2 (Yfile);
+
+    input1 >> X;
+    input2 >> Y;
+
+    clock_t ct = clock();
+    ct = clock();
+    naive_ed(X,Y);
+    ct = clock() - ct;
+  
+   // printf ("Naive Algo It took me (%f seconds).\n", ((float)ct)/CLOCKS_PER_SEC);
+    uint64_t countedits = 0;
+
+    input1.close();
+    input2.close();
+
     return 0;
 }

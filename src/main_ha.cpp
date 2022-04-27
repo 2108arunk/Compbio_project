@@ -7,6 +7,8 @@
 
 using namespace std;
 
+// This is the implementation of Hirshberg's Algorithm
+
 int editDistanceNaive(string &X, string &Y){
 
     int ins = 1, del = 1;
@@ -20,12 +22,11 @@ int editDistanceNaive(string &X, string &Y){
         *(dp + i*col + 0) = *(dp + (i-1)*col + 0) + 1;
 
     for (int j = 1; j <= Y.size(); j++)
-        *(dp + 0*col + j ) = *(dp + 0*col + (j-1) ) +1;
+        *(dp + 0*col + j ) = *(dp + 0*col + (j-1)) + 1;
 
     int ed;
 
     for (int i = 1; i <= X.size(); i++){
-
         for (int j = 1; j <= Y.size(); j++){
             int delta = 0;
             if ( X[i-1] != Y[j-1]){
@@ -176,7 +177,7 @@ pair<string, string> HirschbergsAlgo( string &X, string &Y){
         return make_pair(X,Y);
 
     if (X.length()==1 && Y.length()==1)
-        return make_pair("|","|");
+        return make_pair(X,Y);
 
     if (X == ""){
         string str;
@@ -211,12 +212,12 @@ pair<string, string> HirschbergsAlgo( string &X, string &Y){
             if (X[0] == Y[Y.size()-1])
                 y.push_back(X[0]);
             else {
-                Y[Y.size()-1] = '|';
+                //Y[Y.size()-1] = '|';
                 y.push_back('|');
             }
         } else {
-            Y[Y.size()-1] = '|';
-            y.push_back('|');
+            //Y[Y.size()-1] = '|';
+            y.push_back(X[0]);
         }
         return make_pair(y,Y);
     }
@@ -236,12 +237,12 @@ pair<string, string> HirschbergsAlgo( string &X, string &Y){
             if (Y[0] == X[X.size()-1])
                 y.push_back(Y[0]);
             else {
-                X[X.size()-1] = '|';
+                //X[X.size()-1] = '|';
                 y.push_back('|');
             }
         } else {
-            X[X.size()-1] = '|';
-            y.push_back('|');
+            //X[X.size()-1] = '|';
+            y.push_back(Y[0]);
         }
         return make_pair(X,y);
     }
@@ -270,37 +271,47 @@ pair<string, string> HirschbergsAlgo( string &X, string &Y){
 
 }
 
-int main(){
+int main(int argc, char* argv[]){
 
-    string X, Y;
-    ifstream input1 ("data/xaa");
-    ifstream input2 ("data/xab");
+    if (argc < 3){
+        cout<< "provide both testfiles for X and Y";
+        return 0;
+    }
+
+    string Xfile, Yfile, X, Y;
+    Xfile = argv[1];
+    Yfile = argv[2];
+
+
+    ifstream input1 (Xfile);
+    ifstream input2 (Yfile);
+    ofstream output ("output.txt");
 
     input1 >> X;
     input2 >> Y;
 
-    cout << X.size() <<" "<<Y.size()<<endl;
     clock_t ct = clock();
-
     ct = clock();
     auto t = HirschbergsAlgo(X,Y);
-    ct = clock() - ct;
-    printf ("Hirschbergs Algo It took me %ld clicks (%f seconds).\n",ct, ((float)ct)/CLOCKS_PER_SEC);
+    
 
-    int countedits = 0;
+    string edits(t.first.size(), ' ');
+    uint64_t countedits = 0;
 
-    for (int i = 0; i < t.first.size(); i++){
-        if (t.first[i] == '|' || t.first[i] == '-' ||
-           t.second[i] == '|' || t.second[i] == '-')
-           countedits++;
+    for(int i = 0 ; i < t.first.size(); i++){
+        if (t.first[i] == t.second[i])
+            edits[i] = ('|');
+        else
+            countedits++;
     }
-
-    cout<<"No of Edits are:" << countedits << endl;
+  
+    ct = clock() - ct;
+    //printf ("Hirschbergs Algo It took me (%f seconds).\n", ((float)ct)/CLOCKS_PER_SEC);
 
     input1.close();
     input2.close();
 
-    return 0;
+    return countedits;
 }
 
 
