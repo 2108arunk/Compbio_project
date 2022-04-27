@@ -3,8 +3,10 @@ CC = g++
 INC_DIR = include
 CFLAGS = -Wall -Wextra -pedantic -Wshadow -funroll-loops -O3 -DNDEBUG -std=c++14 -pthread 
 
-all: hirschberg_edit naive_edit hirsch_archit
+all: bin_create hirschberg_edit naive_edit
 
+bin_create:
+	mkdir -p bin
 hirschberg_edit:
 	$(CC) $(CFLAGS) -o ./bin/hirschberg_edit -Iinclude/ ./src/main_ha.cpp
 

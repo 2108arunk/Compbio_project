@@ -213,11 +213,11 @@ pair<string, string> HirschbergsAlgo( string &X, string &Y){
                 y.push_back(X[0]);
             else {
                 //Y[Y.size()-1] = '|';
-                y.push_back('|');
+                y.push_back(X[0]);
             }
         } else {
             //Y[Y.size()-1] = '|';
-            y.push_back(X[0]);
+            y.push_back('-');
         }
         return make_pair(y,Y);
     }
@@ -238,11 +238,11 @@ pair<string, string> HirschbergsAlgo( string &X, string &Y){
                 y.push_back(Y[0]);
             else {
                 //X[X.size()-1] = '|';
-                y.push_back('|');
+                y.push_back(Y[0]);
             }
         } else {
             //X[X.size()-1] = '|';
-            y.push_back(Y[0]);
+            y.push_back('-');
         }
         return make_pair(X,y);
     }

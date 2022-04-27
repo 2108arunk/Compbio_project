@@ -1,2 +1,17 @@
 Computational Biology Project: Arun Kumar and Archit Saxena
 Implementation and testing of Hirschberg’s Algorithm
+
+==================================
+Usage
+==================================
+Code Layout
+==================================
+Scripts
+
+The scripts are organized into three folders
+1. Test: this has basic tests which compares the edit aligned string found out by hirschberg with the ED given by naive algorithm.
+test1.sh: Test basic string "A" with "B"
+test2.sh: Test empty string with a non empty string like "AAAAAAAA"  with ""
+test3.sh: Test "telephone" with "elephant"
+test4.sh: Test unary string with A's
+test5.sh: take a big random string and compute its edit distance with another big random string 

@@ -12,3 +12,4 @@ data/
 junk/
 output.txt
 outputNaive.txt
+bin/*
