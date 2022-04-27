@@ -6,6 +6,11 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "deque": "cpp",
-        "iosfwd": "cpp"
-    }
+        "iosfwd": "cpp",
+        "utility": "cpp",
+        "algorithm": "cpp",
+        "random": "cpp",
+        "fstream": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
 }

@@ -1,0 +1,14 @@
+.DS_Store
+.vscode/c_cpp_properties.json
+basic_ed
+basic_ed.o
+bin/hirsch_archit
+bin/hirschberg_edit
+bin/hirshAS
+bin/hirshberg
+bin/naive_edit
+bin/naivedp
+data/
+junk/
+output.txt
+outputNaive.txt

@@ -116,6 +116,7 @@ uint64_t naive_ed(string &X, string &Y)
     fill = fill_a(dp,a_X,a_Y,X,Y,row, col, a_size - 1);
     print_a(a_X,a_Y,fill,a_size);
     free(a_X);free(a_Y);free(dp);
+    
     return dp[row*col - 1];
 
 }
