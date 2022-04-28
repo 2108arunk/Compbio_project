@@ -3,8 +3,18 @@ Implementation and testing of Hirschberg’s Algorithm
 
 ==================================
 Usage
+give make in top level folder. Binaries will be generated in bin folder. THe important binaries are:
+1. hirschberg_edit: Calculates hirschberg alignment of two string. takes two files and outputs a new file output.txt
+ex. ./hirschberg_edit in1.txt in2.txt
+2. naive_edit: Calculates  alignment of two string using Wagner–Fischer algorithm. takes two files and outputs a new file outputNaive.txt
+ex. ./naive_edit in1.txt in2.txt
 ==================================
 Code Layout
+
+The source code file resides in src folder. It has two files:
+1.basic_ed.cpp: basic edit distance which O(mn) both space and time
+2.generate_string.cpp : a string generator to generator good artificial strings
+3.main_ha.cpp : hirschbergs algorithm which is O(mn) time but O(n) space.
 ==================================
 Scripts
 
@@ -14,4 +24,12 @@ test1.sh: Test basic string "A" with "B"
 test2.sh: Test empty string with a non empty string like "AAAAAAAA"  with ""
 test3.sh: Test "telephone" with "elephant"
 test4.sh: Test unary string with A's
-test5.sh: take a big random string and compute its edit distance with another big random string 
+test5.sh: take a big random string and compute its edit distance with another big random string
+
+2. profile: THis folder has scripts which were used to draw various plots presented in the presentation
+2a. n*m vs time and memory
+2b. ED vs time and memory
+2c. sigma vs time and memory
+
+3. dataset: This has scripts to test real world test scripts.
+3a. dna dataset

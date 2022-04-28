@@ -18,16 +18,15 @@ int editDistanceNaive(string &X, string &Y){
     
     *(dp) = 0;
  
-    for (int i = 1; i <= X.size(); i++)
+    for (uint64_t i = 1; i <= X.size(); i++)
         *(dp + i*col + 0) = *(dp + (i-1)*col + 0) + 1;
 
-    for (int j = 1; j <= Y.size(); j++)
+    for (uint64_t j = 1; j <= Y.size(); j++)
         *(dp + 0*col + j ) = *(dp + 0*col + (j-1)) + 1;
 
-    int ed;
 
-    for (int i = 1; i <= X.size(); i++){
-        for (int j = 1; j <= Y.size(); j++){
+    for (uint64_t i = 1; i <= X.size(); i++){
+        for (uint64_t j = 1; j <= Y.size(); j++){
             int delta = 0;
             if ( X[i-1] != Y[j-1]){
                     delta = 1;
@@ -35,11 +34,9 @@ int editDistanceNaive(string &X, string &Y){
             *( dp + i*col + j) =     *(dp + (i-1)*col + (j-1)) + delta;
             *( dp + i*col + j) = min(*(dp + (i)*col + j), *(dp + (i-1)*col + (j)) + ins );
             *( dp + i*col + j) = min(*(dp + (i)*col + j), *(dp + (i)*col + ((j-1))) + del);
-            ed = *( dp + i*col + j);
         }
     }
 
-    cout << "Edit distance Naive = " << ed << endl; 
     free(dp);
 
     return 0;
@@ -51,14 +48,14 @@ int editDistanceNaive(string &X, string &Y){
 
 void printNaive(vector <vector<int>> temp, string X){
 
-     for (int i = 0; i < temp.size(); i++){
+     for (uint64_t i = 0; i < temp.size(); i++){
 
         if (i==0)
             printf("x = %3c |", '*');
         else
             printf("x = %3c |", X[i-1]);
 
-        for (int j = 0; j < temp[0].size(); j++){
+        for (uint64_t j = 0; j < temp[0].size(); j++){
             printf("%2d ", temp[i][j]);
         }
         cout << endl;
@@ -78,19 +75,19 @@ int editDistanceSpace( string &X, string &Y, vector <int> &xm){
     xm.resize(Y.size()+1, 0);
 
     vector <int> temp(Y.size(),0);
-    int ed, prev;
+    int ed=0, prev;
 
-    for (int i = 0; i < temp.size(); i++)
+    for (uint64_t i = 0; i < temp.size(); i++)
         temp[i] = i+1;
 
-    for (int i = 0; i < X.size(); i++){        
+    for (uint64_t i = 0; i < X.size(); i++){        
         ed = i+1;
         prev = i;
 
         if (i == X.size()/2-1)
             xm[0] = ed;
 
-        for (int j = 0; j < Y.size(); j++){
+        for (uint64_t j = 0; j < Y.size(); j++){
             if ( X[i] != Y[j]){
                 prev = prev + 1;
             }
@@ -114,7 +111,7 @@ int editDistanceSpace2( string &X, string &Y, vector <int> &xm){
     xm.resize(Y.size()+1, 0);
 
     vector <int> temp(Y.size(),0);
-    int ed, prev;
+    int ed=0, prev;
 
     for (int i = 0; i < temp.size(); i++)
         temp[i] = i+1;
@@ -145,7 +142,7 @@ int editDistanceSpace2( string &X, string &Y, vector <int> &xm){
     return ed;
 }
 
-int calculateIndex(string &X, string &Y, vector <int> EdXmid, int xmid){
+int calculateIndex(string &X, string &Y, vector <int> EdXmid){
 
     string Xr = X;
     string Yr = Y;
@@ -156,9 +153,9 @@ int calculateIndex(string &X, string &Y, vector <int> EdXmid, int xmid){
     vector <int> EdXrY;
     int ed = editDistanceSpace2(Xr, Yr, EdXrY);
     reverse(EdXrY.begin(), EdXrY.end());
-    int index;
+    int index=0;
 
-    for (int i = 0 ; i < EdXrY.size(); i++){
+    for (uint64_t i = 0 ; i < EdXrY.size(); i++){
         if ( (EdXmid[i]+EdXrY[i]) == ed ){
             index = i;
             break;
@@ -200,7 +197,7 @@ pair<string, string> HirschbergsAlgo( string &X, string &Y){
         string y;
         bool flag = true;
 
-        for (int i = 0; i < Y.size()-1; i++){
+        for (uint64_t i = 0; i < Y.size()-1; i++){
             if (X[0] == Y[i] && flag == true){
                 y.push_back(X[0]);
                 flag = false;
@@ -225,7 +222,7 @@ pair<string, string> HirschbergsAlgo( string &X, string &Y){
     if (Y.length() == 1){
         string y;
         bool flag = true;
-        for (int i = 0; i < X.size()-1; i++){
+        for (uint64_t i = 0; i < X.size()-1; i++){
             if (Y[0] == X[i] && flag == true){
                 y.push_back(Y[0]);
                 flag = false;
@@ -248,14 +245,13 @@ pair<string, string> HirschbergsAlgo( string &X, string &Y){
     }
 
     int xl = X.length();
-    int yl = Y.length();
     int xmid = xl/2;
 
     vector <int> EdXmid;
-    int ed = editDistanceSpace(X, Y, EdXmid);
+    editDistanceSpace(X, Y, EdXmid);
 
     //printf("Edit Distance from HA: %d\n", ed);
-    int yindex = calculateIndex(X, Y, EdXmid, xmid);
+    int yindex = calculateIndex(X, Y, EdXmid);
 
     string Xl = X.substr(0, xmid  ); 
     string Yl = Y.substr(0, yindex);
@@ -298,7 +294,7 @@ int main(int argc, char* argv[]){
     string edits(t.first.size(), ' ');
     uint64_t countedits = 0;
 
-    for(int i = 0 ; i < t.first.size(); i++){
+    for(uint64_t i = 0 ; i < t.first.size(); i++){
         if (t.first[i] == t.second[i])
             edits[i] = ('|');
         else
@@ -310,7 +306,6 @@ int main(int argc, char* argv[]){
 
     input1.close();
     input2.close();
-
     return countedits;
 }
 

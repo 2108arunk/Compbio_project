@@ -16,14 +16,14 @@ void print_a(char *a_X,char *a_Y,uint64_t si,\
 {
     ofstream out_file; 
     out_file = ofstream("outputNaive.txt");
-    for(int i=si+1;i < a_size; i++)
+    for(uint64_t i=si+1;i < a_size; i++)
         out_file << a_X[i];
     out_file << endl;
-    for(int i=si+1;i < a_size; i++)
+    for(uint64_t i=si+1;i < a_size; i++)
         out_file << (((a_X[i]!='_' && a_Y[i]!='_') && (a_X[i] != a_Y[i]))?\
         '|' : ' ');
     out_file << endl;
-    for(int i=si+1;i < a_size; i++)
+    for(uint64_t i=si+1;i < a_size; i++)
         out_file << a_Y[i];
     out_file.close();
 }
@@ -146,10 +146,7 @@ int main(int argc, char* argv[]){
     ct = clock() - ct;
   
    // printf ("Naive Algo It took me (%f seconds).\n", ((float)ct)/CLOCKS_PER_SEC);
-    uint64_t countedits = 0;
 
     input1.close();
-    input2.close();
-
     return ret;
 }

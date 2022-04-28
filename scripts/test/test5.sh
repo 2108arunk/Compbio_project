@@ -2,7 +2,8 @@
 H_PATH=../../bin/hirschberg_edit
 N_PATH=../../bin/naive_edit
 
-for i in {1..100}
+export LC_CTYPE=C
+for i in {1..10}
 do
 < /dev/urandom tr -dc "[:alnum:]" | head -c10000 > in1.txt
 < /dev/urandom tr -dc "[:alnum:]" | head -c10000 > in2.txt
@@ -16,8 +17,7 @@ if [ $retval1 -eq $retval2 ]
 	then 
 		echo "Test 5 passed"
 	else
-		echo "Test 5 failed"
-		exit 0
+		echo "Test 5 failed"	
 fi
 rm -rf output.txt outputNaive.txt in1.txt in2.txt
 done
