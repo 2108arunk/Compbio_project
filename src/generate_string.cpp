@@ -19,7 +19,6 @@ string permute(string &text,int percent, int alphabet_size)
 				ans.push_back(text[i]);
 				ans.push_back('a' + rand()%alphabet_size);
 			}
-		
 		}
 		else
 		{

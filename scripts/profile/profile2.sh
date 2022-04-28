@@ -1,5 +1,6 @@
 #Profile n,m with time, memory
 H_PATH=../../bin/hirschberg_edit
+A_PATH=../../bin/archit
 G_STRING=../../bin/generate_string
 export LC_CTYPE=C
 
