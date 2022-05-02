@@ -20,7 +20,7 @@ void print_a(char *a_X,char *a_Y,uint64_t si,\
         out_file << a_X[i];
     out_file << endl;
     for(uint64_t i=si+1;i < a_size; i++)
-        out_file << (((a_X[i]!='_' && a_Y[i]!='_') && (a_X[i] != a_Y[i]))?\
+        out_file << (((a_X[i]!='_' && a_Y[i]!='_') && (a_X[i] == a_Y[i]))?\
         '|' : ' ');
     out_file << endl;
     for(uint64_t i=si+1;i < a_size; i++)
@@ -91,9 +91,9 @@ uint64_t naive_ed(string &X, string &Y)
 {
     uint64_t row = X.size() + 1, col = Y.size() + 1,tempind;
     uint64_t a_size = X.size() + Y.size(),fill;
-    uint64_t *dp = (uint64_t *)malloc((row * col) * sizeof(uint64_t));
-    char *a_X = (char *)malloc(a_size * sizeof(char));
-    char *a_Y = (char *)malloc(a_size * sizeof(char));
+    uint64_t *dp = new uint64_t[(row * col) * sizeof(uint64_t)];
+    char *a_X = new char[a_size * sizeof(char)];
+    char *a_Y = new char[a_size * sizeof(char)];
     uint64_t ret;
     dp[0] = 0;
     for(uint64_t i=1;i<row;i++)
@@ -113,7 +113,10 @@ uint64_t naive_ed(string &X, string &Y)
     fill = fill_a(dp,a_X,a_Y,X,Y,row, col, a_size - 1);
     print_a(a_X,a_Y,fill,a_size);
     ret = dp[row*col - 1];
-    free(a_X);free(a_Y);free(dp);
+    //free(a_X);free(a_Y);free(dp);
+    delete[] a_X;
+    delete[] a_Y;
+    delete[] dp;
     return ret;
 
 }
@@ -136,8 +139,11 @@ int main(int argc, char* argv[]){
     ifstream input1 (Xfile);
     ifstream input2 (Yfile);
 
-    input1 >> X;
-    input2 >> Y;
+
+    getline(input1 >> ws,X);
+    getline(input2 >> ws,Y);
+    //input1 >> X;
+    //input2 >> Y;
 
     clock_t ct = clock();
     ct = clock();
@@ -145,7 +151,7 @@ int main(int argc, char* argv[]){
     
     ct = clock() - ct;
   
-   // printf ("Naive Algo It took me (%f seconds).\n", ((float)ct)/CLOCKS_PER_SEC);
+    printf ("NaiveTime :%f :seconds, EditDistance : %llu \n", ((float)ct)/CLOCKS_PER_SEC, ret);
 
     input1.close();
     return ret;

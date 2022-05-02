@@ -155,7 +155,7 @@ int main(int argc, char * const argv[]) {
     priority_queue<int> bestScores; // Contains numBestSeqs best scores
     int k = kArg;
     unsigned char* alignment = NULL; int alignmentLength;
-    //clock_t start = clock();
+    clock_t start = clock();
 
     if (!findAlignment || silent) {
         printf("0/%d", numQueries);
@@ -262,9 +262,9 @@ int main(int argc, char * const argv[]) {
 
     }
 
-    //clock_t finish = clock();
-    //double cpuTime = static_cast<double>(finish-start)/CLOCKS_PER_SEC;
-    //printf("\nCpu time of searching: %lf\n", cpuTime);
+    clock_t finish = clock();
+    double cpuTime = static_cast<double>(finish-start)/CLOCKS_PER_SEC;
+    printf("EDLIBTime: %lf\n", cpuTime);
     // ---------------------------------------------------------------------------- //
 
     // Free allocated space
@@ -350,14 +350,14 @@ void printAlignment(const char* query, const char* target,
     for (int start = 0; start < alignmentLength; start += 50) {
         //target
         //printf("T: ");
-        int startTIdx = -1;
+        //int startTIdx = -1;
         for (int j = start; j < start + 50 && j < alignmentLength; j++) {
             if (alignment[j] == EDLIB_EDOP_INSERT)
                 fprintf(fptr,"-");
             else
                 fprintf(fptr,"%c", target[++tIdx]);
-            if (j == start)
-                startTIdx = tIdx;
+            if (j == start){}
+                //startTIdx = tIdx;
         }
         //printf(" (%d - %d)\n", max(startTIdx, 0), tIdx);
         fprintf(fptr,"\n");
@@ -371,14 +371,14 @@ void printAlignment(const char* query, const char* target,
 
         // query
         //printf("Q: ");
-        int startQIdx = qIdx;
+        //int startQIdx = qIdx;
         for (int j = start; j < start + 50 && j < alignmentLength; j++) {
             if (alignment[j] == EDLIB_EDOP_DELETE)
                 fprintf(fptr,"-");
             else
                 fprintf(fptr,"%c", query[++qIdx]);
-            if (j == start)
-                startQIdx = qIdx;
+            if (j == start){}
+                //startQIdx = qIdx;
         }
         //printf(" (%d - %d)\n\n", max(startQIdx, 0), qIdx);
     }
