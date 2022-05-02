@@ -1,7 +1,7 @@
-#Download pizza corpus and run scripts
-FILE=dna.50MB.gz
-FILEN=dna.50MB
-wget pizzachili.dcc.uchile.cl/texts/dna/$FILE
+Download pizza corpus and run scripts
+FILE=para.gz
+FILEN=para
+wget pizzachili.dcc.uchile.cl/repcorpus/real/$FILE
 E_PATH=../../bin/edlib_edit
 H_PATH=../../bin/hirschberg
 N_PATH=../../bin/naive_edit
@@ -16,8 +16,8 @@ do
    echo "Evaluating for " $x
    head -c $x $FILEN > in.txt
    split -b $((x / 2)) in.txt
-   cat xaa | tr -cd '[:alnum:]' > in1.txt
-   cat xab | tr -cd '[:alnum:]' > in2.txt
+   cat xaa | tr -cd '[:alnum:][:punct:][:blank:]' > in1.txt
+   cat xab | tr -cd '[:alnum:][:punct:][:blank:]' > in2.txt
    ./$E_PATH in1.txt in2.txt 2>&1
    ./$H_PATH in1.txt in2.txt 2>&1
    ./$N_PATH in1.txt in2.txt 2>&1

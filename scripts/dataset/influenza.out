@@ -1,0 +1,31 @@
+Evaluating for  20000
+EDLIBTime: 0.026233
+HirschbergsTime: 2.326450 :seconds EditDistance: 3103: X 10000 Y 10000 
+NaiveTime :1.043729 :seconds, EditDistance : 3103 
+Evaluating for  40000
+EDLIBTime: 0.175199
+HirschbergsTime: 9.706133 :seconds EditDistance: 8585: X 20000 Y 20000 
+NaiveTime :4.313479 :seconds, EditDistance : 8585 
+Evaluating for  60000
+EDLIBTime: 0.335404
+HirschbergsTime: 22.580099 :seconds EditDistance: 14750: X 30000 Y 30000 
+NaiveTime :10.376631 :seconds, EditDistance : 14750 
+Evaluating for  80000
+EDLIBTime: 0.721918
+HirschbergsTime: 39.906639 :seconds EditDistance: 19699: X 40000 Y 40000 
+NaiveTime :18.281282 :seconds, EditDistance : 19699 
+Evaluating for  100000
+EDLIBTime: 0.985701
+HirschbergsTime: 61.997478 :seconds EditDistance: 25563: X 50000 Y 50000 
+NaiveTime :28.619265 :seconds, EditDistance : 25563 
+Evaluating for  120000
+EDLIBTime: 1.255527
+HirschbergsTime: 87.545280 :seconds EditDistance: 29427: X 60000 Y 60000 
+NaiveTime :41.420269 :seconds, EditDistance : 29427 
+Evaluating for  140000
+EDLIBTime: 2.330342
+HirschbergsTime: 119.374580 :seconds EditDistance: 35708: X 70000 Y 70000 
+NaiveTime :55.580112 :seconds, EditDistance : 35708 
+Evaluating for  160000
+EDLIBTime: 2.892974
+HirschbergsTime: 159.257751 :seconds EditDistance: 40859: X 80000 Y 80000 

@@ -1,0 +1,32 @@
+alphabet size is  4
+EDLIBTime: 1.008302
+HirschbergsTime: 65.203316 :seconds EditDistance: 25872 
+NaiveTime :29.023905 :seconds, EditDistance : 25872 
+alphabet size is  8
+EDLIBTime: 1.456050
+HirschbergsTime: 62.749550 :seconds EditDistance: 34642 
+NaiveTime :26.812059 :seconds, EditDistance : 34642 
+alphabet size is  12
+EDLIBTime: 1.470622
+HirschbergsTime: 61.194813 :seconds EditDistance: 38641 
+NaiveTime :25.587286 :seconds, EditDistance : 38641 
+alphabet size is  16
+EDLIBTime: 1.480824
+HirschbergsTime: 59.961571 :seconds EditDistance: 40907 
+NaiveTime :24.871307 :seconds, EditDistance : 40907 
+alphabet size is  20
+EDLIBTime: 1.491289
+HirschbergsTime: 59.236111 :seconds EditDistance: 42477 
+NaiveTime :24.364840 :seconds, EditDistance : 42477 
+alphabet size is  24
+EDLIBTime: 1.494547
+HirschbergsTime: 58.259800 :seconds EditDistance: 43544 
+NaiveTime :23.962122 :seconds, EditDistance : 43544 
+alphabet size is  28
+EDLIBTime: 1.508923
+HirschbergsTime: 57.602665 :seconds EditDistance: 44326 
+NaiveTime :23.569902 :seconds, EditDistance : 44326 
+alphabet size is  32
+EDLIBTime: 1.503859
+HirschbergsTime: 57.198048 :seconds EditDistance: 44908 
+NaiveTime :23.449133 :seconds, EditDistance : 44908 

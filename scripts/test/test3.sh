@@ -1,5 +1,5 @@
 #Basic string
-H_PATH=../../bin/hirschberg_edit
+H_PATH=../../bin/hirschberg
 N_PATH=../../bin/naive_edit
 echo "telephone" > in1.txt
 echo "elephant" > in2.txt

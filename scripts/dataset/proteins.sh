@@ -1,7 +1,7 @@
 #Download pizza corpus and run scripts
-FILE=dna.50MB.gz
-FILEN=dna.50MB
-wget pizzachili.dcc.uchile.cl/texts/dna/$FILE
+FILE=proteins.50MB.gz
+FILEN=proteins.50MB
+wget pizzachili.dcc.uchile.cl/texts/protein/$FILE
 E_PATH=../../bin/edlib_edit
 H_PATH=../../bin/hirschberg
 N_PATH=../../bin/naive_edit

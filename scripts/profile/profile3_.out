@@ -1,0 +1,60 @@
+alphabet size is  4
+        1.01 real         1.00 user         0.00 sys
+            12943360  maximum resident set size
+            11814144  peak memory footprint
+       65.69 real        65.21 user         0.30 sys
+             9945088  maximum resident set size
+             9815168  peak memory footprint
+       34.06 real        26.39 user         2.67 sys
+           917553152  maximum resident set size
+         20019222976  peak memory footprint
+alphabet size is  8
+        1.45 real         1.44 user         0.00 sys
+            11321344  maximum resident set size
+            10126336  peak memory footprint
+       62.70 real        62.58 user         0.11 sys
+            11075584  maximum resident set size
+             9782272  peak memory footprint
+       31.41 real        24.32 user         2.93 sys
+          2495037440  maximum resident set size
+         20019222912  peak memory footprint
+alphabet size is  12
+        1.47 real         1.46 user         0.00 sys
+            11878400  maximum resident set size
+            10732736  peak memory footprint
+       61.54 real        61.26 user         0.17 sys
+            11075584  maximum resident set size
+             9798720  peak memory footprint
+       30.92 real        23.22 user         2.62 sys
+          1473118208  maximum resident set size
+         20019239360  peak memory footprint
+alphabet size is  16
+        1.48 real         1.47 user         0.00 sys
+            13975552  maximum resident set size
+            12846400  peak memory footprint
+       60.27 real        60.05 user         0.16 sys
+            11075584  maximum resident set size
+             9798720  peak memory footprint
+       29.72 real        22.40 user         2.65 sys
+          1959575552  maximum resident set size
+         20019206592  peak memory footprint
+alphabet size is  20
+        1.49 real         1.48 user         0.00 sys
+            11911168  maximum resident set size
+            10749120  peak memory footprint
+       59.14 real        58.99 user         0.12 sys
+            10944512  maximum resident set size
+             9749504  peak memory footprint
+       28.70 real        21.86 user         2.59 sys
+          2443919360  maximum resident set size
+         20019190144  peak memory footprint
+alphabet size is  24
+        1.50 real         1.49 user         0.00 sys
+            15122432  maximum resident set size
+            14009728  peak memory footprint
+       58.55 real        58.27 user         0.20 sys
+            10944512  maximum resident set size
+             9749504  peak memory footprint
+       28.57 real        21.48 user         2.51 sys
+          1586036736  maximum resident set size
+         20019239360  peak memory footprint

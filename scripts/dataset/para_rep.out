@@ -1,0 +1,165 @@
+Evaluating for  20
+        0.00 real         0.00 user         0.00 sys
+             1523712  maximum resident set size
+             1049280  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1507328  maximum resident set size
+             1049280  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1490944  maximum resident set size
+             1049344  peak memory footprint
+Evaluating for  40
+        0.00 real         0.00 user         0.00 sys
+             1540096  maximum resident set size
+             1065664  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1507328  maximum resident set size
+             1049280  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1523712  maximum resident set size
+             1065664  peak memory footprint
+Evaluating for  80
+        0.00 real         0.00 user         0.00 sys
+             1540096  maximum resident set size
+             1065664  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1507328  maximum resident set size
+             1049280  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1507328  maximum resident set size
+             1049280  peak memory footprint
+Evaluating for  160
+        0.00 real         0.00 user         0.00 sys
+             1540096  maximum resident set size
+             1065664  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1540096  maximum resident set size
+             1098496  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1572864  maximum resident set size
+             1114816  peak memory footprint
+Evaluating for  320
+        0.00 real         0.00 user         0.00 sys
+             1540096  maximum resident set size
+             1065664  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1556480  maximum resident set size
+             1098432  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1720320  maximum resident set size
+             1262336  peak memory footprint
+Evaluating for  640
+        0.00 real         0.00 user         0.00 sys
+             1556480  maximum resident set size
+             1082048  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1540096  maximum resident set size
+             1082048  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             2342912  maximum resident set size
+             1868480  peak memory footprint
+Evaluating for  1280
+        0.00 real         0.00 user         0.00 sys
+             1687552  maximum resident set size
+             1213120  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1556480  maximum resident set size
+             1098432  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             4816896  maximum resident set size
+             4293248  peak memory footprint
+Evaluating for  2560
+        0.00 real         0.00 user         0.00 sys
+             2064384  maximum resident set size
+             1606400  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+             1556480  maximum resident set size
+             1098432  peak memory footprint
+        0.00 real         0.00 user         0.00 sys
+            14663680  maximum resident set size
+            14156480  peak memory footprint
+Evaluating for  5120
+        0.00 real         0.00 user         0.00 sys
+             2293760  maximum resident set size
+             1819328  peak memory footprint
+        0.02 real         0.02 user         0.00 sys
+             1736704  maximum resident set size
+             1328000  peak memory footprint
+        0.02 real         0.02 user         0.00 sys
+            54001664  maximum resident set size
+            53609408  peak memory footprint
+Evaluating for  10240
+        0.00 real         0.00 user         0.00 sys
+             2179072  maximum resident set size
+             1704640  peak memory footprint
+        0.13 real         0.13 user         0.00 sys
+             1687552  maximum resident set size
+             1245952  peak memory footprint
+        0.12 real         0.09 user         0.02 sys
+           211353600  maximum resident set size
+           210994240  peak memory footprint
+Evaluating for  20480
+        0.01 real         0.01 user         0.00 sys
+             2588672  maximum resident set size
+             2114240  peak memory footprint
+        0.61 real         0.60 user         0.00 sys
+             1867776  maximum resident set size
+             1409728  peak memory footprint
+        0.58 real         0.37 user         0.10 sys
+           464273408  maximum resident set size
+           840567040  peak memory footprint
+Evaluating for  40960
+        0.04 real         0.04 user         0.00 sys
+             2703360  maximum resident set size
+             2228928  peak memory footprint
+        2.53 real         2.52 user         0.00 sys
+             2162688  maximum resident set size
+             1704640  peak memory footprint
+        2.33 real         1.47 user         0.43 sys
+           667058176  maximum resident set size
+          3358645312  peak memory footprint
+Evaluating for  81920
+        0.17 real         0.17 user         0.00 sys
+             3080192  maximum resident set size
+             2638656  peak memory footprint
+       12.65 real        12.61 user         0.03 sys
+             2785280  maximum resident set size
+             2327232  peak memory footprint
+        8.89 real         5.88 user         1.56 sys
+          1144832000  maximum resident set size
+         13430368064  peak memory footprint
+Evaluating for  163840
+        0.66 real         0.65 user         0.00 sys
+             5849088  maximum resident set size
+             5473344  peak memory footprint
+       57.26 real        57.15 user         0.07 sys
+             4161536  maximum resident set size
+             3621632  peak memory footprint
+time: command terminated abnormally
+       28.15 real        20.00 user         4.00 sys
+          2878865408  maximum resident set size
+         46579422080  peak memory footprint
+time: signal: Invalid argument
+Evaluating for  327680
+        2.65 real         2.63 user         0.00 sys
+             6569984  maximum resident set size
+             6177792  peak memory footprint
+      240.91 real       240.33 user         0.40 sys
+             6586368  maximum resident set size
+             6079360  peak memory footprint
+time: command terminated abnormally
+       26.67 real        19.01 user         4.01 sys
+          1180368896  maximum resident set size
+         46474462208  peak memory footprint
+time: signal: Invalid argument
+Evaluating for  655360
+       10.46 real        10.44 user         0.02 sys
+             7028736  maximum resident set size
+             6636544  peak memory footprint
+Evaluating for  1310720
+Evaluating for  2621440
+time: command terminated abnormally
+        0.06 real         0.00 user         0.00 sys
+             5816320  maximum resident set size
+             5309184  peak memory footprint
+Evaluating for  5242880

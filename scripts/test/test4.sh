@@ -1,5 +1,5 @@
 #Unary string
-H_PATH=../../bin/hirschberg_edit
+H_PATH=../../bin/hirschberg
 N_PATH=../../bin/naive_edit
 
 for i in {1..90}
